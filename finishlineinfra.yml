@@ -16,6 +16,10 @@ Parameters:
     Type: String
     Default: t2.micro
     ConstraintDescription: must be a valid EC2 instance type.
+  AmiId:
+    Description: Amazon EC2 AMI
+    Type: String
+    Default: ami-amazon-linux-latest
   SSHLocation:
     Description: The IP address range that can be used to SSH to the EC2 instances
     Type: String
@@ -24,17 +28,6 @@ Parameters:
     Default: 0.0.0.0/0
     AllowedPattern: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
     ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
-Mappings:
-  AWSInstanceType2Arch:
-    t2.micro:
-      Arch: HVM64
-  AWSInstanceType2NATArch:
-    t2.micro:
-      Arch: NATHVM64
-  AWSRegionArch2AMI:
-    us-east-1:
-      HVM64: ami-0080e4c5bc078760e
-      HVMG2: ami-0aeb704d503081ea6
 Resources:
   EC2Instance:
     Type: 'AWS::EC2::Instance'
