@@ -36,8 +36,18 @@ Resources:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       KeyName: !Ref KeyName
-      ImageId: !Ref AmiId  
+      ImageId: !Ref AmiId 
+      Tag:
+        - Name: !Ref CharityInstance 
   InstanceSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: !Ref SSHLocation
 Outputs:
   InstanceId:
     Description: InstanceId of the newly created EC2 instance
