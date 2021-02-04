@@ -35,7 +35,7 @@ Resources:
     Properties:
       InstanceType: !Ref InstanceType
       SecurityGroups:
-        - !Ref InstanceSecurityGroup
+        - !Ref CharityWebServerSG
       KeyName: !Ref KeyName
       ImageId: !Ref AmiId 
       Tags:
@@ -46,16 +46,20 @@ Resources:
     Properties:
       GroupDescription: Enable SSH access via port 22
       SecurityGroupIngress:
-        - IpProtocol: tcp
+        - IpProtocol: tcp 
           FromPort: '22'
           ToPort: '22'
-          CidrIp: !Ref SSHLocation
+          CidrIp: !Ref SSHLocation 
+        - IpProtocol: tcp
+          FromPort: 80 
+          ToPort: 80 
+          CidrIp: !Ref 'SSHLocation'
   CharityDBServer:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: !Ref InstanceType
       SecurityGroups:
-        - !Ref InstanceSecurityGroup
+        - !Ref CharityDBServerSG
       KeyName: !Ref KeyName
       ImageId: !Ref AmiId 
       Tags:
@@ -69,18 +73,18 @@ Resources:
         - IpProtocol: tcp
           FromPort: '3306'
           ToPort: '3306'
-          CidrIp: !Ref SSHLocation
+          CidrIp: !Ref CharityWebServerSG
 Outputs:
   InstanceId:
     Description: InstanceId of the newly created EC2 instance
-    Value: !Ref CharityInstance
+    Value: !Ref CharityWebServer 
   AZ:
     Description: Availability Zone of the newly created EC2 instance
     Value: !GetAtt 
-      - CharityInstance
+      - CharityWebServer 
       - AvailabilityZone
   PublicDNS:
     Description: Public DNSName of the newly created EC2 instance
     Value: !GetAtt 
-      - CharityInstance
-      - PublicDnsName
+      - CharityWebServer
+      - PublicIp
