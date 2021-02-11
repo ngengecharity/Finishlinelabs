@@ -1,5 +1,4 @@
 AWSTemplateFormatVersion: 2010-09-09
-AWSTemplateFormatVersion: 2010-09-09
 Description: >-
   AWS CloudFormation Sample Template EC2InstanceWithSecurityGroupSample: Create
   an Amazon EC2 instance running the Amazon Linux AMI. The AMI is chosen based
@@ -73,7 +72,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '3306'
           ToPort: '3306'
-          CidrIp: !Ref CharityWebServerSG
+          CidrIp: !Ref SSHLocation
 Outputs:
   InstanceId:
     Description: InstanceId of the newly created EC2 instance
@@ -88,3 +87,4 @@ Outputs:
     Value: !GetAtt 
       - CharityWebServer
       - PublicIp
+# State end      
