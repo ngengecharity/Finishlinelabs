@@ -333,4 +333,3 @@ Outputs:
     Value: !GetAtt 
       - CharityWordPress
       - PublicIp   
-## test 
