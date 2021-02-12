@@ -281,7 +281,7 @@ Resources:
         - !Ref CharityWordPressSecurityGroup
       KeyName: !Ref KeyName
       Tags:
-        - Key: Value
+        - Key: Name
           Value: CharityWordPress
       UserData: !Base64 
         'Fn::Join':
