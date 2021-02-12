@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Cloudformation') {
             steps {
-             sh "aws cloudformation create-stack --template-body 'file:///var/lib/jenkins/workspace/Finishlinelab4_finishlinelab4/finishlinelab4infra.yml' --stack-name 'FinislineLab4' --region 'us-east-1' --parameters ParameterKey=KeyName,ParameterValue=finishlinelab Parameterkey=InstanceType,ParameterValue=t2.small Parameterkey=DBName,ParameterValue=wordpress ParameterKey=DBUser,ParameterValue=wordpress Parameterkey=DBRootPassword,ParameterValue=wordpress"
+             sh "aws cloudformation create-stack --template-body 'file:///var/lib/jenkins/workspace/Finishlinelab4_finishlinelab4/finishlinelab4infra.yml' --stack-name 'FinislineLab4' --region 'us-east-1' --parameters ParameterKey=KeyName,ParameterValue=finishlinelab Parameterkey=InstanceType,ParameterValue=t2.small Parameterkey=DBName,ParameterValue=wordpress ParameterKey=DBUser,ParameterValue=wordpress"
             }
         }
         stage('Build') {
