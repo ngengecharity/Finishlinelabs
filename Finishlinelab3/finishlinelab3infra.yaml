@@ -87,4 +87,3 @@ Outputs:
     Value: !GetAtt 
       - CharityWebServer
       - PublicIp
-# State end      
