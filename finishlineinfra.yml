@@ -39,7 +39,7 @@ Resources:
       ImageId: !Ref AmiId 
       Tags:
         - Key: Name
-        - Value: CharityInstance 
+          Value: CharityInstance 
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
