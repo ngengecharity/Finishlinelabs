@@ -18,7 +18,7 @@ Parameters:
     ConstraintDescription: must be a valid EC2 instance type.
   AmiId:
     Description: Amazon EC2 AMI
-    Type: String
+    Type: String 
     Default: ami-0080e4c5bc078760e
   SSHLocation:
     Description: The IP address range that can be used to SSH to the EC2 instances
@@ -62,3 +62,4 @@ Outputs:
     Value: !GetAtt 
       - CharityInstance
       - PublicIp 
+  ## test
