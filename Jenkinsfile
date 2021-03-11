@@ -3,19 +3,16 @@ pipeline {
         registry = "charityngenge/charity-boutgue" 
         registryCredential = 'docker_credentials' 
         dockerImage = '' 
+        app_home ='/var/lib/jenkins/workspace/charity-boutigue_website/staticweb'
     }
     agent any 
     stages { 
-        stage('Cloning our Git') { 
-            steps { 
-                git 'https://github.com/ngengecharity/Finishlinelabs.git' 
-            }
-        } 
         stage('Building our image') { 
             steps { 
+              dir ('${app_home}') {
                 script { 
-                    sh 'cd staticweb'
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                  }
                 }
             } 
         }
