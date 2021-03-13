@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+   charity-boutique:
+     image: charityngenge/charity-boutgue: ${tag}
+     restart: always
+     ports: 
+      - "80:80"
+networks:
+  charity
